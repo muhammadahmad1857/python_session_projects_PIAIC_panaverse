@@ -55,12 +55,12 @@ def main() -> None:
 
         match(choice):
             case "1": # accssing an element
-                index = int(input("Enter the index of the element you want to access (0 to {}): ".format(len(fruit_list) - 1)))
+                index = int(input(f"Enter the index of the element you want to access (0 to {len(fruit_list) - 1}): "))
                 result = access_elements(fruit_list, index)
                 print("Result:", result)
 
             case "2":  # Modify an element
-                index = int(input("Enter the index of the element you want to modify (0 to {}): ".format(len(fruit_list) - 1)))
+                index = int(input(f"Enter the index of the element you want to modify (0 to {len(fruit_list) - 1}): "))
                 new_value = input("Enter the new value: ")
                 update_result = update_elements(fruit_list, index, new_value)
                 if update_result is None:
@@ -71,8 +71,8 @@ def main() -> None:
                     print("Result:", update_result)
 
             case "3":  # Slice the list
-                start_index = int(input("Enter the starting index for slicing (0 to {}): ".format(len(fruit_list) - 1)))
-                end_index = int(input("Enter the ending index for slicing ({} to {}): ".format(start_index, len(fruit_list))))  # Adjusted for better user experience
+                start_index = int(input(f"Enter the starting index for slicing (0 to {len(fruit_list) - 1}): "))
+                end_index = int(input(f"Enter the ending index for slicing ({start_index} to {len(fruit_list)}): "))  # Adjusted for better user experience
                 sliced_result = slice_list(fruit_list, start_index, end_index)
                 print("Sliced list:", sliced_result)
 

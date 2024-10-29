@@ -3,7 +3,7 @@
 # def main():
 #     # displaying wleocme message
 #     print("Welcome to Planetary Weight Calculator")
-    
+
 #     # taking input FROM USER
 #     earth_weight = float(input("Enter your weight on earth(in kg) --> "))
     
