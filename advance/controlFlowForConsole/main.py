@@ -8,16 +8,16 @@ MIN_LIMIT:int = 1
 def main():
     # Milestone 1: Showing welcome message
     print('Welcome to the High-Low Game!')
-    curr_round = 1
-    score = 0
+    curr_round:int = 1
+    score:int = 0
     
     # Milestone 4: Play multiple rounds
     while curr_round <= MAX_ROUNDS:
         print(f'Round {curr_round}:')
         
         # Milestone 1: Generate the random numbers
-        your_num = random.randint(MIN_LIMIT, MAX_LIMIT)
-        comp_num = random.randint(MIN_LIMIT, MAX_LIMIT)
+        your_num:int = random.randint(MIN_LIMIT, MAX_LIMIT)
+        comp_num:int = random.randint(MIN_LIMIT, MAX_LIMIT)
         print(f"Your number: {your_num}")
         
         # Milestone 2: Get the user choice
