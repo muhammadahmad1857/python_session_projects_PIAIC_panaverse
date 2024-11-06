@@ -8,10 +8,10 @@
 #     earth_weight = float(input("Enter your weight on earth(in kg) --> "))
     
 #     # converting it by multiplying with eart weight and mars gravity
-#     mars_weight:int = earth_weight * MARS_GRAVITY
+#     mars_weight:int = round(earth_weight * MARS_GRAVITY,2)
     
 #     # displaying the calculated weight
-#     print(f"Your weight on Mars would be {mars_weight:.2f} kg.")
+#     print(f"Your weight on Mars would be {mars_weight} kg.")
     
 
 
@@ -67,8 +67,8 @@ def main() -> None:
     
     # Converting weight to the specified planet
     try:
-        planet_weight: float = PLANETS_GRAVITY[planet] * earth_weight
-        print(f"Your weight on {planet.capitalize()} would be {round(planet_weight, 2)} kg.")
+        planet_weight: float = round(PLANETS_GRAVITY[planet] * earth_weight, 2)
+        print(f"Your weight on {planet.capitalize()} would be {planet_weight} kg.")
     except KeyError:
         print(f"Sorry, we don't have the gravity data for '{planet}'.")
         return  
