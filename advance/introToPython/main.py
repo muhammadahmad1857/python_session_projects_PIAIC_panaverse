@@ -18,26 +18,9 @@
 # if __name__ == '__main__':
 #     main()
 
-
-# Milestone #2: Adding in All Planets
 from typing import Dict
 
-# Defining a constant dictionary
-
-
-# - Mercury: 37.6%
-
-# - Venus: 88.9%
-
-# - Mars: 37.8%
-
-# - Jupiter: 236.0%
-
-# - Saturn: 108.1%
-
-# - Uranus: 81.5%
-
-# - Neptune: 114.0%
+# Define gravity factors for each planet relative to Earth
 PLANETS_GRAVITY: Dict[str, float] = {
     "mercury": 37.6 / 100,
     "venus": 88.9 / 100,
@@ -48,30 +31,40 @@ PLANETS_GRAVITY: Dict[str, float] = {
     "neptune": 114 / 100
 }
 
+def get_earth_weight() -> float:
+    """Prompt user for their Earth weight and validate input."""
+    while True:
+        try:
+            weight = float(input("Enter your weight on Earth (in kg) --> "))
+            if weight > 0:
+                return weight
+            print("Weight must be a positive number.")
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+
+def get_planet() -> str:
+    """Prompt user for the planet name and validate input."""
+    while True:
+        planet = input("Enter the planet to see your weight on it --> ").lower().strip()
+        if planet in PLANETS_GRAVITY:
+            return planet
+        print(f"Sorry, we don't have the gravity data for '{planet}'.")
+
+def calculate_weight(earth_weight: float, planet: str) -> float:
+    """Calculate weight on a specified planet."""
+    return round(PLANETS_GRAVITY[planet] * earth_weight, 2)
+
 def main() -> None:
     """Main function to calculate and display weight on different planets."""
-    # Displaying welcome message
     print("Welcome to Planetary Weight Calculator")
+
+    # Get validated user input for weight and planet
+    earth_weight = get_earth_weight()
+    planet = get_planet()
     
-    # Taking input from user
-    try:
-        earth_weight: float = float(input("Enter your weight on Earth (in kg) --> "))
-        if earth_weight <= 0:
-            print("Weight must be a positive number.")
-            return
-    except ValueError as e:
-        print(f"Invalid input: {e}. Please try again.")
-        return
-    
-    planet: str = input("Enter the planet in which you want to see the weight --> ").lower().strip()
-    
-    # Converting weight to the specified planet
-    try:
-        planet_weight: float = round(PLANETS_GRAVITY[planet] * earth_weight, 2)
-        print(f"Your weight on {planet.capitalize()} would be {planet_weight} kg.")
-    except KeyError:
-        print(f"Sorry, we don't have the gravity data for '{planet}'.")
-        return  
+    # Calculate and display the weight on the selected planet
+    planet_weight = calculate_weight(earth_weight, planet)
+    print(f"Your weight on {planet.capitalize()} would be {planet_weight} kg.")
 
 if __name__ == '__main__':
     main()
